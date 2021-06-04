@@ -27,14 +27,20 @@ export default class Launches extends Component {
 
     render() {
         const launch = this.state.spaceData.map((launch) => {
-            return <LaunchItem key={launch.id} launch={launch} />   
+            return <LaunchItem key={launch.id} launch={launch} />
         })
-        
-        return (
-            <>
-                <h1 className="display-4 my-4">Launches</h1>
-                {launch}
-            </>
-        )
+        if (!this.state.isLoaded) {
+            return (
+                <h1>Loading...</h1>
+            )
+        } else {
+
+            return (
+                <>
+                    <h1 className="display-4 my-4">Launches</h1>
+                    {launch}
+                </>
+            )
+        }
     }
 }

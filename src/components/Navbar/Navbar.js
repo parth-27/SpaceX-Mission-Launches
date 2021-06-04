@@ -16,7 +16,7 @@ export default class Navbar extends Component {
                         </Link>
                     </li> */}
                     <li className="nav-item">
-                        <Link to="launches/">
+                        <Link to="/launches/">
                             Launches
                         </Link>
                     </li>

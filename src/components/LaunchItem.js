@@ -44,9 +44,7 @@ export default function LaunchItem(props) {
                     </h4>
                     <p>
                         <span className="font-weight-bold text-white mr-2">
-                            <Moment format="YYYY-MM-DD">
-                                Launch Date : {date_local}
-                            </Moment>
+                            Launch Date : {date_local}
                         </span>
                     </p>
                     <p>
@@ -56,8 +54,8 @@ export default function LaunchItem(props) {
                     </p>
                 </div>
                 <div className="col-md-3 text-center">
-                    <Link to={`/rockets/${id}`} className="btn btn-secondary">
-                        Details
+                    <Link to={`/launchDetail/${id}`} className="btn btn-secondary">
+                        Launch Details
                     </Link>
                 </div>
             </div>
