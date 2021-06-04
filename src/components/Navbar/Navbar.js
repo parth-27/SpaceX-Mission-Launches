@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import space from './Spacex.png';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useHistory } from 'react-router-dom';
 
-export default class Navbar extends Component {
-    render() {
+export default function Navbar () {
+    const { logout, isAuthenticated } = useAuth0();
+    const history = useHistory();
         return (
             <nav className="navbar fixed-top navbar-expand-sm bg-dark">
                 <Link to="/">
@@ -15,14 +18,23 @@ export default class Navbar extends Component {
                             Missions
                         </Link>
                     </li> */}
-                    <li className="nav-item">
+                    <li className="nav-item" style={{ paddingRight: "20%" }}>
                         <Link to="/launches/">
                             Launches
                         </Link>
                     </li>
-                    
+                    {
+                        isAuthenticated &&
+                        <li className="nav-item" style={{ paddingRight: "20%" }}>
+                            <Link onClick={() => {
+                                logout();
+                                history.push("/login");
+                            }}>
+                            LogOut
+                        </Link>
+                        </li>
+                    }
                 </ul>
             </nav>
         )
-    }
 }

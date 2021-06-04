@@ -1,38 +1,42 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import styled from 'styled-components';
 
-export default class Login extends Component {
-    render() {
-        return (
-            <form>
 
-                <h3>Log in</h3>
+const Login = () => {
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
-                </div>
+    const { loginWithRedirect } = useAuth0();
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
-                </div>
+    return <Wrapper>
+        <div className="container">
+            <h1>SpaceX Launches</h1>
+            <button className="button" onClick={loginWithRedirect}
+                style={{
+                    margin: "2rem 0",
+                    padding: "1rem 2rem",
+                    widht: "120px",
+                    cursor: "pointer",
+                    borderRadius:"10px"
+                }}
+            >Login / Sign up</button>
+        </div>
+    </Wrapper>;
+};
 
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>
-
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
-                <p className="forgot-password text-center">
-                    Already an <Link to="/signup">user ?</Link>
-                </p>
-                <p className="forgot-password text-center">
-                    Forgot <Link to="/login">password ?</Link>
-                </p>
-            </form>
-        );
-    }
-}
+const Wrapper = styled.section`
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	.container {
+		width: 90vw;
+		max-width: 600px;
+		text-align: center;
+	}
+	img {
+		margin-bottom: 2rem;
+	}
+	h1 {
+		margin-bottom: 1.5rem;
+	}
+`;
+export default Login;
